@@ -1,0 +1,23 @@
+name: Python Package using Conda
+
+on: [push]
+
+jobs:
+  run-code:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.10
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+    - name: Install dependencies
+      run: |
+        conda env create
+        conda run -n mol2net python 1_2_mol2net.py
+        conda run -n mol2net python 3_netAna.py
