@@ -13,7 +13,7 @@ python 3_netAna.py  # Analyzes the network via networkX
 ```
 
 ## Credits
-If you use this code for your work, please cite the corresponding paper, this github repository and/or the corresponding Zenodo DOI.
+If you use this code for your work, please cite the corresponding paper, and this github repository or the corresponding Zenodo DOI.
 ```
 @software{rufalexan_2022_7025094,
   author       = {rufalexan},
