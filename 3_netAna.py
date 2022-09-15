@@ -17,7 +17,22 @@
 
 AUTHOR: Alexander Ruf (rufalexan@gmail.com)
 
-If you use this code for your work, please cite the corresponding paper, this github repository and/or the corresponding Zenodo DOI.
+If you use this code for your work, please cite the corresponding paper:
+
+10.1021/acs.analchem.2c01271
+
+, this github repository and/or the corresponding Zenodo DOI:
+
+@software{rufalexan_2022_7025094,
+  author       = {rufalexan},
+  title        = {rufalexan/mol2net: v0.1.0},
+  month        = aug,
+  year         = 2022,
+  publisher    = {Zenodo},
+  version      = {v0.1.0},
+  doi          = {10.5281/zenodo.7025094},
+  url          = {https://doi.org/10.5281/zenodo.7025094}
+}
 '''
 
 
@@ -41,16 +56,16 @@ begin_time = datetime.datetime.now()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #name    = 'PubChem 1-10000[H2 ], [O ], [CO ], [H3N ]'
 #name2   = 'pubchem_database_CHNO_1_10000'
-#name    = 'PubChem 10001-20000[H2 ], [O ], [CO ], [H3N ]'
+name    = 'EDGES_TEST_PubChem 10001-20000[[H2 ], [O ], [CO ], [H3N ]]'
 #name2   = 'pubchem_database_CHNO_10001_20000'
 #name    = 'Ice residue[H2 ], [O ], [CO ], [H3N ]'
-name    = 'EDGES_[H2 ], [O ], [CO ], [H3N ]_min_set'
+#name    = 'EDGES_[H2 ], [O ], [CO ], [H3N ]_min_set'
 #name     = 'EDGES_[H2 ], [O ], [CO ], [H3N ], [CHN ], [CH3N ], [H2O ], [CO2 ], [CH2O ], [CHNO ]'
 #name    = 'Ice residue[O ], [CO ], [H3N ]'             # min_set - H2
 #name    = 'Ice residue[H2 ], [CO ], [H3N ]'            # min_set - O
 #name    = 'Ice residue[H2 ], [O ], [H3N ]'             # min_set - CO
 #name    = 'Ice residue[H2 ], [O ], [CO ]'              # min_set - NH3
-name2   = 'NODES_aurelien_matrix'
+name2   = 'TEST_pubchem_database_CHNO_10001-20000'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 df_edges = pd.read_csv(name + '.tsv', sep='\t', header=0)
@@ -61,7 +76,7 @@ G = nx.from_pandas_edgelist(df_edges, 'Source', 'Target', create_using=nx.Graph(
 #name = 'PubChem subset 1-10000'
 #name = 'PubChem subset 10001-20000'
 #name = 'Ice residue'
-name2 = 'H$_2$O:CH$_3$OH:NH$_3$'
+#name2 = 'H$_2$O:CH$_3$OH:NH$_3$'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ####################
@@ -106,26 +121,26 @@ G_cc = nx.from_pandas_edgelist(df_edges_cc, 'Source', 'Target', create_using=nx.
 ####################
 #             COLORS
 ####################
-###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                 PUBCHEM
-#color_type = 'Compound class'      #    H  C  N  O         H/C  N/C  O/C        exact_mass  DBE      Compound class    Compound class_aromatics      X_C  complexity  logP   component         ### "/" filenames cannot be saved !
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                 PUBCHEM
+color_type = 'Compound class'          ## H  C  N  O         H/C  N/C  O/C        exact_mass  DBE      Compound class    Compound class_aromatics      X_C  complexity  logP   component         ### "/" filenames cannot be saved !
 
-#########sample_colors = pd.DataFrame({color_type: ['Other',     'CH_aromatics', 'Acids',  'Alcohols', 'Ketones',  'Esters', 'Amides', 'Nitriles', 'Amines', 'N_cyclic_aliphatics', 'N_aromatics'],
-#########                        'sample_color':   ['whitesmoke', 'black',       'lightseagreen','blue',     'skyblue',  'cyan',   'gold',   'lime',     'green',  'magenta',              'red'] })         
+#######sample_colors = pd.DataFrame({color_type: ['Other',     'CH_aromatics', 'Acids',  'Alcohols', 'Ketones',  'Esters', 'Amides', 'Nitriles', 'Amines', 'N_cyclic_aliphatics', 'N_aromatics'],
+#######                        'sample_color':   ['whitesmoke', 'black',       'lightseagreen','blue',     'skyblue',  'cyan',   'gold',   'lime',     'green',  'magenta',              'red'] })         
 
-#sample_colors = pd.DataFrame({color_type: ['CH_aromatics', 'Acids',  'Alcohols', 'Ketones',  'Esters', 'Amides', 'Nitriles', 'Amines', 'N_cyclic_aliphatics', 'N_aromatics'],
-#                        'sample_color':   ['black',       'lightseagreen','blue',     'skyblue',  'cyan',   'gold',   'lime',     'green',  'magenta',              'red'] })         
-##########                                   CH            |----             CHO               ---|  |- CHNO-||---      CHN     ---||---         N heterocycles        ---|
+sample_colors = pd.DataFrame({color_type: ['CH_aromatics', 'Acids',  'Alcohols', 'Ketones',  'Esters', 'Amides', 'Nitriles', 'Amines', 'N_cyclic_aliphatics', 'N_aromatics'],
+                        'sample_color':   ['black',       'lightseagreen','blue',     'skyblue',  'cyan',   'gold',   'lime',     'green',  'magenta',              'red'] })         
+########                                   CH            |----             CHO               ---|  |- CHNO-||---      CHN     ---||---         N heterocycles        ---|
 
-##sample_colors = pd.DataFrame({color_type: ['Other',      'CH_aromatics', 'N_aromatics', 'CH_aromatics_N_aromatics'],
-##                        'sample_color':   ['whitesmoke', 'black',        'red',         'blue'] })         
-###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sample_colors = pd.DataFrame({color_type: ['Other',      'CH_aromatics', 'N_aromatics', 'CH_aromatics_N_aromatics'],
+                        'sample_color':   ['whitesmoke', 'black',        'red',         'blue'] })         
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#####~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                     ICE_RESIDUE
-color_type = 'Ice composition H2O_CH3OH_NH3'                 # Ice composition H2O_CH3OH_NH3    H  C  N  O  H/C  N/C  O/C  mz_theo_neutral  abundance_int - lg_abundance_int  mu  DBE  N/O  O/H         component         ### "/" filenames cannot be saved !
+#######~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                     ICE_RESIDUE
+##color_type = 'Ice composition H2O_CH3OH_NH3'                 # Ice composition H2O_CH3OH_NH3    H  C  N  O  H/C  N/C  O/C  mz_theo_neutral  abundance_int - lg_abundance_int  mu  DBE  N/O  O/H         component         ### "/" filenames cannot be saved !
 
-sample_colors = pd.DataFrame({color_type: ['3_1_0.2', '3_1_1',   '3_1_1 16h', '3_1_5', '10_1_1',    '3_1_1 overirradiation'], 
-                        'sample_color':   ['blue',    '#15B01A', 'green',     'red',   'lightgray', 'orange']})
-#####~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##sample_colors = pd.DataFrame({color_type: ['3_1_0.2', '3_1_1',   '3_1_1 16h', '3_1_5', '10_1_1',    '3_1_1 overirradiation'], 
+##                        'sample_color':   ['blue',    '#15B01A', 'green',     'red',   'lightgray', 'orange']})
+#######~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 carac = df_nodes_cc[['id', color_type]]
 carac = carac.set_index('id')
@@ -136,7 +151,6 @@ carac[color_type].cat.codes
 sample_names = df_nodes_cc[color_type].unique()                       ###### no CH_aromatics dabei, und dann nan dabei
 carac2 = carac.merge(sample_colors, how='left', on=color_type)            
 node_colors = carac2['sample_color'].tolist()
-
 
 
 
@@ -1263,8 +1277,9 @@ node_colors = carac2['sample_color'].tolist()
   
   
   
-#print('Time code = '+str(datetime.datetime.now() - begin_time)+' [h:min:sec]')
-  
+print('Time code = '+str(datetime.datetime.now() - begin_time)+' [h:min:sec]')
+print('\n\n~~~~~~~~~~~~~~~~~~~~~~~~~Good job~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
+
   
 
 

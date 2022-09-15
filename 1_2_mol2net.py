@@ -19,7 +19,22 @@
 
 AUTHOR: Alexander Ruf (rufalexan@gmail.com)
 
-If you use this code for your work, please cite the corresponding paper, this github repository and/or the corresponding Zenodo DOI.
+If you use this code for your work, please cite the corresponding paper:
+
+10.1021/acs.analchem.2c01271
+
+, this github repository and/or the corresponding Zenodo DOI:
+
+@software{rufalexan_2022_7025094,
+  author       = {rufalexan},
+  title        = {rufalexan/mol2net: v0.1.0},
+  month        = aug,
+  year         = 2022,
+  publisher    = {Zenodo},
+  version      = {v0.1.0},
+  doi          = {10.5281/zenodo.7025094},
+  url          = {https://doi.org/10.5281/zenodo.7025094}
+}
 
 '''
 
@@ -63,11 +78,11 @@ begin_time = datetime.datetime.now()
 ################################
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##name = 'pubchem_database_CHNO_1-10000'
-name = 'pubchem_database_CHNO_10001-20000'
+name = 'TEST_pubchem_database_CHNO_10001-20000'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 matrix = pd.read_csv(name + '.tsv', sep='\t', skiprows=0).to_numpy()
 ##name = 'PubChem 1-10000'              #################################
-name = 'PubChem 10001-20000'              #################################
+name = 'TEST_PubChem 10001-20000'              #################################
 
 id = around(matrix[:,0].reshape(len(matrix),1).astype(float),6)
 mz = around(matrix[:,2].reshape(len(matrix),1).astype(float),6)
