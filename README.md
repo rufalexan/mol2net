@@ -15,7 +15,7 @@ python 3_netAna.py  # Analyzes the network via networkX
 ## Credits
 If you use this code for your work, please cite the corresponding paper
 ```
-Ruf, Danger, 
+Ruf, Danger, 2022, Analytical Chemistry,
 Network Analysis Reveals Spatial Clustering and Annotation of Complex Chemical Spaces: 
 Application to Astrochemistry, 
 10.1021/acs.analchem.2c01271
