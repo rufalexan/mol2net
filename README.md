@@ -15,7 +15,10 @@ python 3_netAna.py  # Analyzes the network via networkX
 ## Credits
 If you use this code for your work, please cite the corresponding paper
 ```
-Ruf, Danger, Network Analysis Reveals Spatial Clustering and Annotation of Complex Chemical Spaces: Application to Astrochemistry, 10.1021/acs.analchem.2c01271
+Ruf, Danger, 
+Network Analysis Reveals Spatial Clustering and Annotation of Complex Chemical Spaces: 
+Application to Astrochemistry, 
+10.1021/acs.analchem.2c01271
 ```
 , and this github repository or the corresponding Zenodo DOI.
 ```
