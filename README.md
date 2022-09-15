@@ -11,6 +11,10 @@ Networks from a list of molecules
 python 1_2_mol2net.py  # Creates networks from a list of molecules
 python 3_netAna.py  # Analyzes the network via networkX
 ```
+Run the two scripts either separately, or automatically via the bash script:
+```
+mol2net.sh
+```
 
 ## Credits
 If you use this code for your work, please cite the corresponding paper
