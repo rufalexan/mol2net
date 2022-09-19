@@ -15,5 +15,4 @@ jobs:
     - name: Install dependencies
       run: |
         conda env create
-        conda run -n mol2net python 1_2_mol2net.py
-        conda run -n mol2net python 3_netAna.py
+        conda run -n mol2net sh mol2net.sh
