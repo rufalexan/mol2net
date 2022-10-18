@@ -19,10 +19,20 @@ mol2net.sh
 ## Credits
 If you use this code for your work, please cite the corresponding paper
 ```
-Ruf, Danger, 2022, Analytical Chemistry,
-Network Analysis Reveals Spatial Clustering and Annotation of Complex Chemical Spaces: 
-Application to Astrochemistry, 
-10.1021/acs.analchem.2c01271
+@article{ruf2022network,
+author = {Ruf, Alexander and Danger, Grégoire},
+title = {Network Analysis Reveals Spatial Clustering and Annotation of Complex Chemical Spaces: Application to Astrochemistry},
+journal = {Analytical Chemistry},
+volume = {94},
+number = {41},
+pages = {14135-14142},
+year = {2022},
+doi = {10.1021/acs.analchem.2c01271},
+note ={PMID: 36209417},
+URL = {https://doi.org/10.1021/acs.analchem.2c01271},
+eprint = {https://doi.org/10.1021/acs.analchem.2c01271},
+keywords={year2022,corresponding,first},
+}
 ```
 , and this github repository or the corresponding Zenodo DOI.
 ```
