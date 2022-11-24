@@ -352,57 +352,57 @@ for f in files:
 ####    plt.savefig(name+'_'+str(FILTER_COMPONENTS)+'_'+str(trafos)+'    degreeDistri'+'.png')
 ##    plt.show()
 #
-    #########################################
-    ##                                 LAYOUT
-    #########################################
-    plt.figure()
-    plt.title(name, wrap=True, fontsize=12)
-##    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=20, width=.03, font_size=5)
-##    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
-##    nx.draw(G, pos = nx.spring_layout(G, scale=1), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
-##    nx.draw(G, pos = nx.spring_layout(G, k=.5/math.sqrt(G.order()), scale=10), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
-    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=2, width=.01, alpha=1)
-    for i in range(len(sample_colors)):
-        plt.plot([], [], sample_colors.values[i][1], marker='o', markersize=10, label=sample_colors.values[i][0])      
-#
-    plt.legend()                      ## loc='upper left'
-##    plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges, node size ~ '+str(node_size), fontsize=8, wrap=True)
-    plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges', fontsize=8, wrap=True)
-    plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    network'+'.png')
+##    #########################################
+##    ##                                 LAYOUT
+##    #########################################
+##    plt.figure()
+##    plt.title(name, wrap=True, fontsize=12)
+####    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=20, width=.03, font_size=5)
+####    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
+####    nx.draw(G, pos = nx.spring_layout(G, scale=1), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
+####    nx.draw(G, pos = nx.spring_layout(G, k=.5/math.sqrt(G.order()), scale=10), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
+##    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=2, width=.01, alpha=1)
+##    for i in range(len(sample_colors)):
+##        plt.plot([], [], sample_colors.values[i][1], marker='o', markersize=10, label=sample_colors.values[i][0])      
+###
+##    plt.legend()                      ## loc='upper left'
+####    plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges, node size ~ '+str(node_size), fontsize=8, wrap=True)
+##    plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges', fontsize=8, wrap=True)
+####    plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    network'+'.png')
 ##    plt.show()
 #    
-##    ##################################################
-##    ##    CONTINOUS COLOR GRADIENT (e.g. element maps)
-##    ##################################################
-##    fontsize=20
-##    l = ['H', 'C', 'N', 'O', 'S', 'HC', 'NC', 'OC', 'SC', 'Mass (exact)', 'Intensity', 'DBE']
+####################################################
+####    CONTINOUS COLOR GRADIENT (e.g. element maps)
+####################################################
+##fontsize=20
+##l = ['H', 'C', 'N', 'O', 'S', 'HC', 'NC', 'OC', 'SC', 'Mass (exact)', 'Intensity', 'DBE']
 ###
-##    for i in l:
-##        color_type = i
-##        carac = xNODES[['id', color_type]]
-##        carac = carac.set_index('id')
-##        carac = carac.reindex(G.nodes())
-##        carac[color_type]=pd.Categorical(carac[color_type])
-##        carac[color_type].cat.codes
-##        nodes = G.nodes()
-##        plt.figure()
-##        plt.title(color_type, wrap=True, fontsize=25)
+##for i in l:
+##    color_type = i
+##    carac = xNODES[['id', color_type]]
+##    carac = carac.set_index('id')
+##    carac = carac.reindex(G.nodes())
+##    carac[color_type]=pd.Categorical(carac[color_type])
+##    carac[color_type].cat.codes
+##    nodes = G.nodes()
+##    plt.figure()
+##    plt.title(color_type, wrap=True, fontsize=25)
 ####        nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=carac[color_type].cat.codes, cmap=plt.cm.jet, node_size=3, width=.1, font_size=10)
 ####        pos = nx.spring_layout(G)
-##        pos = nx.nx_pydot.graphviz_layout(G)
+##    pos = nx.nx_pydot.graphviz_layout(G)
 ####        pos = nx.fruchterman_reingold_layout(G)
 ####        pos = nx.nx_pydot.graphviz_layout(G)
-##        nx.draw(G, pos, with_labels=False, node_color=node_colors, node_size=2, width=.01, alpha=1)
-##        ec = nx.draw_networkx_edges(G, pos, width=.01, alpha=0.2)
-##    #    nc = nx.draw_networkx_nodes(G, pos, nodelist=nodes, node_color=carac[color_type], with_labels=False, node_size=5, cmap=plt.cm.jet) 
-##        nc = nx.draw_networkx_nodes(G, pos, nodelist=nodes, node_color=carac[color_type], node_size=3, cmap=plt.cm.jet) 
-##    ##    plt.colorbar(nc)
-##        cb = plt.colorbar(nc, orientation='vertical')
-##        nc.figure.axes[0].tick_params(axis="both", labelsize=21)           ## change the label size
-##        nc.figure.axes[1].tick_params(axis="y", labelsize=21)              ## change the tick label size of colorbar
-##        plt.axis('off')
-##        plt.savefig(name+', Comp'+str(FILTER_COMPONENTS)+'    '+color_type+'    network'+'.png')
-##        #plt.show()
+##    nx.draw(G, pos, with_labels=False, node_color=node_colors, node_size=2, width=.01, alpha=1)
+##    ec = nx.draw_networkx_edges(G, pos, width=.01, alpha=0.2)
+###    nc = nx.draw_networkx_nodes(G, pos, nodelist=nodes, node_color=carac[color_type], with_labels=False, node_size=5, cmap=plt.cm.jet) 
+##    nc = nx.draw_networkx_nodes(G, pos, nodelist=nodes, node_color=carac[color_type], node_size=3, cmap=plt.cm.jet) 
+####    plt.colorbar(nc)
+##    cb = plt.colorbar(nc, orientation='vertical')
+##    nc.figure.axes[0].tick_params(axis="both", labelsize=21)           ## change the label size
+##    nc.figure.axes[1].tick_params(axis="y", labelsize=21)              ## change the tick label size of colorbar
+##    plt.axis('off')
+####    plt.savefig(name+', Comp'+str(FILTER_COMPONENTS)+'    '+color_type+'    network'+'.png')
+##    plt.show()
 
 
 
@@ -500,8 +500,8 @@ for f in files:
 ####          COMPONENT HISTOGRAM
 #################################
 ##plt.figure()
-##pd.DataFrame(df_nodes_cc['component'].value_counts(normalize=True)).sort_index().plot(kind='bar', rot=0, ylabel='', legend=False, color='black', width=1)
-###pd.DataFrame(df_nodes_cc['component'].value_counts(normalize=False)).sort_index().plot(kind='bar', rot=0, ylabel='', legend=False, color='black', width=1)
+##pd.DataFrame(xNODES0['component'].value_counts(normalize=True)).sort_index().plot(kind='bar', rot=0, ylabel='', legend=False, color='black', width=1)
+###pd.DataFrame(xNODES0['component'].value_counts(normalize=False)).sort_index().plot(kind='bar', rot=0, ylabel='', legend=False, color='black', width=1)
 ##plt.title(name+', Component '+str(FILTER_COMPONENTS), wrap=True)          
 ##plt.xticks(np.arange(0, len(df_comp_freq), 20), fontsize=15)                      ## ice
 ####plt.xticks(np.arange(0, len(df_comp_freq), 100), fontsize=15)                      ## paris
@@ -511,8 +511,8 @@ for f in files:
 ###plt.ylabel('Frequency (log scale)')
 ##plt.ylabel('Frequency (log scale, normalized)', fontsize=15)
 ###plt.ylabel('Frequency (normalized)')
-##plt.savefig(name+', Comp'+str(FILTER_COMPONENTS)+ '    hist_components'+'.svg')
-
+####plt.savefig(name+', Comp'+str(FILTER_COMPONENTS)+ '    hist_components'+'.svg')
+##plt.show()
 
 
 
@@ -524,7 +524,7 @@ for f in files:
 #######################################################
 ##fontsize=20
 ##color_type = 'component'
-##carac = df_nodes_cc[['id', color_type]]
+##carac = xNODES0[['id', color_type]]
 ##carac = carac.set_index('id')
 ##carac = carac.reindex(G.nodes())
 ##carac[color_type]=pd.Categorical(carac[color_type])
@@ -546,8 +546,8 @@ for f in files:
 ##nc.figure.axes[1].tick_params(axis="y", labelsize=21)              ## change the tick label size of colorbar
 
 ##plt.axis('off')
-##plt.savefig(name+', Comp'+str(FILTER_COMPONENTS)+'    '+color_type+'    network'+'.png')
-####plt.show()
+####plt.savefig(name+', Comp'+str(FILTER_COMPONENTS)+'    '+color_type+'    network'+'.png')
+##plt.show()
 
 
 
@@ -594,12 +594,13 @@ for f in files:
 ##    globals()['df_edges6_backward_%s' % x] = df_edges6_backward[(df_edges6_backward['Molecular Formula'].str.strip() == TRAFO)]
 ##    globals()['products6_backward_%s' % x] = globals()['df_edges6_backward_%s' % x]['Mass (target)'] - globals()['df_edges6_backward_%s' % x]['Mass (source)']
 
-###forward = [products6_H2.shape[0], products6_O.shape[0], products6_CO.shape[0], products6_H3N.shape[0]]
-###backward = [products6_backward_H2.shape[0], products6_backward_O.shape[0], products6_backward_CO.shape[0], products6_backward_H3N.shape[0]]
-###df = pd.DataFrame({'Forward+Backward': np.add(forward, backward), 'Forward': forward,  'Backward': backward}, index=l)
-##forward = [products6_H2.shape[0], products6_O.shape[0], products6_CO.shape[0], products6_H3N.shape[0], products6_CHN.shape[0], products6_CH3N.shape[0], products6_H2O.shape[0], products6_CO2.shape[0], products6_CH2O.shape[0], products6_CHNO.shape[0]]               ##  to be generalized... xx     
-##backward = [products6_backward_H2.shape[0], products6_backward_O.shape[0], products6_backward_CO.shape[0], products6_backward_H3N.shape[0], products6_backward_CHN.shape[0], products6_backward_CH3N.shape[0], products6_backward_H2O.shape[0], products6_backward_CO2.shape[0], products6_backward_CH2O.shape[0], products6_backward_CHNO.shape[0]]
-##df = pd.DataFrame({'Forward': forward,  'Backward': backward}, index=trafo_names)
+##forward = [products6_H2.shape[0], products6_O.shape[0], products6_CO.shape[0], products6_NH3.shape[0]]
+##backward = [products6_backward_H2.shape[0], products6_backward_O.shape[0], products6_backward_CO.shape[0], products6_backward_NH3.shape[0]]
+##df = pd.DataFrame({'Forward': forward,  'Backward': backward}, index=trafos)
+####df = pd.DataFrame({'Forward+Backward': np.add(forward, backward), 'Forward': forward,  'Backward': backward}, index=trafos)
+####forward = [products6_H2.shape[0], products6_O.shape[0], products6_CO.shape[0], products6_H3N.shape[0], products6_CHN.shape[0], products6_CH3N.shape[0], products6_H2O.shape[0], products6_CO2.shape[0], products6_CH2O.shape[0], products6_CHNO.shape[0]]               ##  to be generalized... xx     
+####backward = [products6_backward_H2.shape[0], products6_backward_O.shape[0], products6_backward_CO.shape[0], products6_backward_H3N.shape[0], products6_backward_CHN.shape[0], products6_backward_CH3N.shape[0], products6_backward_H2O.shape[0], products6_backward_CO2.shape[0], products6_backward_CH2O.shape[0], products6_backward_CHNO.shape[0]]
+####df = pd.DataFrame({'Forward': forward,  'Backward': backward}, index=trafo_names)
 
 ##fontsize = 12
 ###plt.figure()
@@ -612,8 +613,8 @@ for f in files:
 ##plt.xlabel('Transformations', fontsize=fontsize+2)
 ##plt.ylabel('Frequency', fontsize=fontsize+2)
 ##plt.legend(fontsize=fontsize)
-##plt.savefig(name+'_Component'+str(FILTER_COMPONENTS)+'_'+SAMPLE_START+SAMPLE_END+'    trafo_bar_chart'+'.png')
-####plt.show()
+####plt.savefig(name+'_Component'+str(FILTER_COMPONENTS)+'_'+SAMPLE_START+SAMPLE_END+'    trafo_bar_chart'+'.png')
+##plt.show()
 
 
 
