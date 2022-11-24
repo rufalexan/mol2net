@@ -11,7 +11,7 @@ Run:
 ```
 mol2net.py
 ```
-or alternatively the two scripts:
+or alternatively the two individual scripts:
 
 ```python
 python 1_2_mol2net.py  # Creates networks from a list of molecules
