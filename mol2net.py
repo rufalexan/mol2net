@@ -69,9 +69,11 @@ trafos          =       ['H2','O','CO','NH3']
 ##trafoWeights    =       [ 1,   5,   1,   2]
 trafoWeights    =       [1]*len(trafos)
 columnNames     =       ['molecular_formula','abundance_int']             ##  for  molFormula  &  abundance/intensity
-nComponents     =       1
 sample          =       'Ice composition H2O_CH3OH_NH3'
+nComponents     =       1
 only_uniques    =       'yes'
+color_type      =       sample
+node_size       =       'Degree'
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ######################################
@@ -295,11 +297,6 @@ for f in files:
 ##    bc2 = pd.DataFrame.from_dict(bc, orient='index', columns=['betCen']).rename_axis('id').reset_index()
 ##    xNODES = xNODES.merge(bc2, how='left', on='id')
 #
-    try:
-        color_type = sample                                                                                                                                                                                                                                   ##   DAS NOCH VERALLG0EMEINERN ??
-    except:
-        color_type = 'Degree'
-#
     colors = mcp.gen_color(cmap='gist_rainbow',n=len(xNODES[color_type].unique()))                    ##  cmap  AUTUMN tab20b coolwarm gist_rainbow tab20c brg      https://matplotlib.org/stable/tutorials/colors/colormaps.html
     ##colors = ['#15B01A',    'blue', 'orange',     'lightgray',   'red', 'green']
     samples0 = xNODES[color_type].unique().tolist()
@@ -313,7 +310,6 @@ for f in files:
     xNODES = xNODES.sort_values(by=['id_G0_nodes'], ascending=True)                              ## re-ordering/re-indexing according to graph G0 (id_G0_nodes)
     node_colors = xNODES['color'].tolist()
 #
-    node_size = 'Degree'
     xNODES = xNODES.sort_values(by=['id_G0_nodes'], ascending=True)
     xNODES['node_size'] = (xNODES[node_size] - np.min(xNODES[node_size])) / (np.max(xNODES[node_size]) - np.min(xNODES[node_size]))
     node_sizes = xNODES['node_size'].tolist()
@@ -326,51 +322,70 @@ for f in files:
 ###########            x2 = xEDGES.join(x.set_index(['id'], verify_integrity=True ),on=[i], how='left').rename(columns={i0:i0+' ('+str(i)+')'})
 ###########            x3 = x2[i0+' ('+str(i)+')']
 ###########            xEDGES[i0+' ('+str(i)+')'] = x3
-#
-#
-#
-##    #########################################
-##    ##                    DEGREE DISTRIBUTION
-##    #########################################
-##    x_name = 'degree'
-##    y_name = 'degree counts'
-##    text   = 'id'
-##    x = xNODES[x_name].tolist()
-##    y = xNODES[y_name].tolist()
-##    text = xNODES[text].tolist()
+
+
+
+
+
+
+
+
+
+
+
+
+
+###########################################
+####                    DEGREE DISTRIBUTION
+###########################################
+##x_name = 'degree'
+##y_name = 'degree counts'
+##text   = 'id'
+##x = xNODES[x_name].tolist()
+##y = xNODES[y_name].tolist()
+##text = xNODES[text].tolist()
 ###
-##    plt.figure()
-##    plt.title(name+'\n, Comp'+str(FILTER_COMPONENTS)+', Trafos'+str(trafos), wrap=True, fontsize=12)
-##    plt.scatter(x,y,c='blue')
+##plt.figure()
+##plt.title(name+'\n, Comp'+str(FILTER_COMPONENTS)+', Trafos'+str(trafos), wrap=True, fontsize=12)
+##plt.scatter(x,y,c='blue')
 ####    for i in range(len(x)):
 ####        plt.annotate(text[i], (x[i], y[i] + 0.2), fontsize=10)
 ###
 ####    plt.xscale('log',base=10) 
 ####    plt.yscale('log',base=10) 
-##    plt.xlabel(x_name)
-##    plt.ylabel(y_name)
+##plt.xlabel(x_name)
+##plt.ylabel(y_name)
 ####    plt.savefig(name+'_'+str(FILTER_COMPONENTS)+'_'+str(trafos)+'    degreeDistri'+'.png')
-##    plt.show()
-#
-##    #########################################
-##    ##                                 LAYOUT
-##    #########################################
-##    plt.figure()
-##    plt.title(name, wrap=True, fontsize=12)
+##plt.show()
+
+
+
+
+
+
+###########################################
+####                                 LAYOUT
+###########################################
+##plt.figure()
+##plt.title(name, wrap=True, fontsize=12)
 ####    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=20, width=.03, font_size=5)
 ####    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
 ####    nx.draw(G, pos = nx.spring_layout(G, scale=1), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
 ####    nx.draw(G, pos = nx.spring_layout(G, k=.5/math.sqrt(G.order()), scale=10), with_labels=False, node_color=node_colors, node_size=node_sizes, width=.05, alpha=1)
-##    nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=2, width=.01, alpha=1)
-##    for i in range(len(sample_colors)):
-##        plt.plot([], [], sample_colors.values[i][1], marker='o', markersize=10, label=sample_colors.values[i][0])      
+##nx.draw(G, pos = nx.nx_pydot.graphviz_layout(G), with_labels=False, node_color=node_colors, node_size=2, width=.01, alpha=1)
+##for i in range(len(sample_colors)):
+##    plt.plot([], [], sample_colors.values[i][1], marker='o', markersize=10, label=sample_colors.values[i][0])      
 ###
-##    plt.legend()                      ## loc='upper left'
+##plt.legend()                      ## loc='upper left'
 ####    plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges, node size ~ '+str(node_size), fontsize=8, wrap=True)
-##    plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges', fontsize=8, wrap=True)
+##plt.text(.6, -1.1,str(G.number_of_nodes())+' nodes, '+str(G.number_of_edges())+' edges', fontsize=8, wrap=True)
 ####    plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    network'+'.png')
-##    plt.show()
-#    
+##plt.show()
+
+
+
+
+
 ####################################################
 ####    CONTINOUS COLOR GRADIENT (e.g. element maps)
 ####################################################
@@ -424,52 +439,52 @@ for f in files:
 
 
 
-##    #########################################   
-##    ##                   edges vs edge counts
-##    #########################################
-##    edge_edgeCounts = xEDGES.drop_duplicates(subset=['mass difference'], keep='first')
-##    edge_edgeCounts = edge_edgeCounts.sort_values(by=['mass difference'], ascending = True)
-##    x_name = 'mass difference'
-##    y_name = 'mass difference counts'
-##    text   = 'trafo'
-##    x = edge_edgeCounts[x_name].tolist()
-##    y = edge_edgeCounts[y_name].tolist()
-##    text = edge_edgeCounts[text].tolist()
+###########################################   
+####                   edges vs edge counts
+###########################################
+##edge_edgeCounts = xEDGES.drop_duplicates(subset=['mass difference'], keep='first')
+##edge_edgeCounts = edge_edgeCounts.sort_values(by=['mass difference'], ascending = True)
+##x_name = 'mass difference'
+##y_name = 'mass difference counts'
+##text   = 'trafo'
+##x = edge_edgeCounts[x_name].tolist()
+##y = edge_edgeCounts[y_name].tolist()
+##text = edge_edgeCounts[text].tolist()
 ###
-##    plt.figure()
-##    plt.title(name, wrap=True, fontsize=12)
-##    plt.scatter(x,y,c='black')
-##    for i in range(len(x)):
-##        plt.annotate(text[i], (x[i], y[i] + 0.2), fontsize=10)
+##plt.figure()
+##plt.title(name, wrap=True, fontsize=12)
+##plt.scatter(x,y,c='black')
+##for i in range(len(x)):
+##    plt.annotate(text[i], (x[i], y[i] + 0.2), fontsize=10)
 ###
-##    plt.xlabel('mass (transformation)')
-##    plt.ylabel('transformation counts')
-##    plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    edge_edgeCounts'+'.png')
-##    ##plt.show()
-##    
-##    #########################################   
-##    ##                    degree vs abundance
-##    #########################################
-##    xNODES2 = xNODES[ (xNODES['sample'] == 'detections') ]
-##    x_name = 'degree'
-##    y_name = 'abundance'
-##    text   = 'molecular_formula'
-##    x = xNODES2[x_name].tolist()
-##    y = xNODES2[y_name].tolist()
-##    ann = xNODES2[text].tolist()
+##plt.xlabel('mass (transformation)')
+##plt.ylabel('transformation counts')
+##plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    edge_edgeCounts'+'.png')
+####plt.show()
 
-##    fig, ax = plt.subplots()
-##    plt.title(name, wrap=True, fontsize=12)
-##    ax.scatter(x,y,c='black')
-##    for i, txt in enumerate(ann):
-##        ax.annotate(txt, (x[i], y[i]))
+###########################################   
+####                    degree vs abundance
+###########################################
+##xNODES2 = xNODES[ (xNODES['sample'] == 'detections') ]
+##x_name = 'degree'
+##y_name = 'abundance'
+##text   = 'molecular_formula'
+##x = xNODES2[x_name].tolist()
+##y = xNODES2[y_name].tolist()
+##ann = xNODES2[text].tolist()
+
+##fig, ax = plt.subplots()
+##plt.title(name, wrap=True, fontsize=12)
+##ax.scatter(x,y,c='black')
+##for i, txt in enumerate(ann):
+##    ax.annotate(txt, (x[i], y[i]))
 ###
-##    plt.yscale('log',base=2) 
-##    plt.xlabel(x_name)
-##    ##plt.xlabel(y_name)
-##    plt.ylabel('log('+str(abundance)+')')
-##    plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    degree_abundance'+'.png')
-##    ##plt.show()
+##plt.yscale('log',base=2) 
+##plt.xlabel(x_name)
+####plt.xlabel(y_name)
+##plt.ylabel('log('+str(abundance)+')')
+##plt.savefig(name+'_Comp'+str(FILTER_COMPONENTS)+'    '+str(color_type)+'    degree_abundance'+'.png')
+####plt.show()
 
 
 
