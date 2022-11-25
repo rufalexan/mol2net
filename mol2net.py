@@ -191,7 +191,7 @@ for f in files:
     x2['NC'] = n/c
     x2['OC'] = o/c
     x2['SC'] = s/c
-    x2['FILTER'] =  1 * ( (mu > 0) )
+    x2['FILTER'] =  1 * ( (mu >= 0) )
     atom_list = ['H','C','N','O','S']
     for i in range(len(atom_list)-1):
         x2['Molecular Formula'] = x2['Molecular Formula'].replace({atom_list[i]+'0'}, {atom_list[i]}, regex=True)
