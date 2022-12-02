@@ -598,10 +598,6 @@ for f in files:
 ##products6  = df_edges6['Mass (target)'] - df_edges6['Mass (source)']
 ##products6_backward  = df_edges6_backward['Mass (target)'] - df_edges6_backward['Mass (source)']
 
-###trafo_names = ['H2', 'CO', 'O', 'H3N']           ### automatize later
-###trafo_names = df_edges['molecular_formula'].unique().tolist()       ## doesn't work.. maybe because of order below
-###trafo_names = ['H2', 'O', 'CO', 'H3N', 'CHN', 'CH3N', 'H2O', 'CO2', 'CH2O', 'CHNO']
-###for x in trafo_names:
 ##for x in trafos:
 ##    TRAFO = x
 ##    globals()['df_edges6_%s' % x] = df_edges6[(df_edges6['Molecular Formula'].str.strip() == TRAFO)]
@@ -609,22 +605,23 @@ for f in files:
 ##    globals()['df_edges6_backward_%s' % x] = df_edges6_backward[(df_edges6_backward['Molecular Formula'].str.strip() == TRAFO)]
 ##    globals()['products6_backward_%s' % x] = globals()['df_edges6_backward_%s' % x]['Mass (target)'] - globals()['df_edges6_backward_%s' % x]['Mass (source)']
 
-##forward = [products6_H2.shape[0], products6_O.shape[0], products6_CO.shape[0], products6_NH3.shape[0]]
-##backward = [products6_backward_H2.shape[0], products6_backward_O.shape[0], products6_backward_CO.shape[0], products6_backward_NH3.shape[0]]
+##forward = []
+##for x in trafos:
+##    a = globals()['products6_%s' % x].shape[0]
+##    b = int(a)
+##    forward.append(b)
+
+##backward = []
+##for x in trafos:
+##    a = globals()['products6_backward_%s' % x].shape[0]
+##    b = int(a)
+##    backward.append(b)
+
 ##df = pd.DataFrame({'Forward': forward,  'Backward': backward}, index=trafos)
-####df = pd.DataFrame({'Forward+Backward': np.add(forward, backward), 'Forward': forward,  'Backward': backward}, index=trafos)
-####forward = [products6_H2.shape[0], products6_O.shape[0], products6_CO.shape[0], products6_H3N.shape[0], products6_CHN.shape[0], products6_CH3N.shape[0], products6_H2O.shape[0], products6_CO2.shape[0], products6_CH2O.shape[0], products6_CHNO.shape[0]]               ##  to be generalized... xx     
-####backward = [products6_backward_H2.shape[0], products6_backward_O.shape[0], products6_backward_CO.shape[0], products6_backward_H3N.shape[0], products6_backward_CHN.shape[0], products6_backward_CH3N.shape[0], products6_backward_H2O.shape[0], products6_backward_CO2.shape[0], products6_backward_CH2O.shape[0], products6_backward_CHNO.shape[0]]
-####df = pd.DataFrame({'Forward': forward,  'Backward': backward}, index=trafo_names)
 
 ##fontsize = 12
-###plt.figure()
-###df.plot.bar(rot=0, stacked=True)
-###df.plot(kind='bar', rot=0,  width=.8, color={"Forward+Backward": "lightgray", "Forward": "black", 'Backward': 'w'},  edgecolor='black')
 ##df.plot(kind='bar', rot=0,  width=.8, color={"Forward": "black", 'Backward': 'w'},  edgecolor='black', stacked=True, fontsize=fontsize)
-##plt.title(SAMPLE_START+r'$\rightarrow$'+SAMPLE_END+'    ('+str(name2)+', Component ' +str(FILTER_COMPONENTS)+')', fontsize=fontsize+2)
-###plt.xticks()
-###plt.yticks()
+##plt.title(SAMPLE_START+r'$\rightarrow$'+SAMPLE_END+'    ('+str(sample)+', Component ' +str(FILTER_COMPONENTS)+')', fontsize=fontsize+2)
 ##plt.xlabel('Transformations', fontsize=fontsize+2)
 ##plt.ylabel('Frequency', fontsize=fontsize+2)
 ##plt.legend(fontsize=fontsize)
