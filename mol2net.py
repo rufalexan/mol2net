@@ -338,8 +338,8 @@ for f in files:
 ###########################################
 ####                    DEGREE DISTRIBUTION
 ###########################################
-##x_name = 'degree'
-##y_name = 'degree counts'
+##x_name = 'Degree'
+##y_name = 'Degree counts'
 ##text   = 'id'
 ##x = xNODES[x_name].tolist()
 ##y = xNODES[y_name].tolist()
@@ -466,7 +466,7 @@ for f in files:
 ####                    degree vs abundance
 ###########################################
 ##xNODES2 = xNODES[ (xNODES['sample'] == 'detections') ]
-##x_name = 'degree'
+##x_name = 'Degree'
 ##y_name = 'abundance'
 ##text   = 'molecular_formula'
 ##x = xNODES2[x_name].tolist()
