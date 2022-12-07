@@ -57,3 +57,5 @@ keywords={year2022,corresponding,first},
 ## Licence
 This code is licensed under the MIT License.
 
+## Contact
+rufalexan@gmail.com
