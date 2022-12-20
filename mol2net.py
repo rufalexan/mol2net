@@ -134,7 +134,7 @@ d = {}
 for f in files:
     key = f
     name = f.replace(".tsv", "")
-    x = globals()[f"orig_{name}"] = pd.read_csv(f, sep='\t', skiprows=0)
+    x = globals()[f"orig_{name}"] = pd.read_csv(f, sep='\t', skiprows=0, encoding = 'unicode_escape')
     if 'id' in x.columns:
         pass
     else:
